@@ -1,0 +1,36 @@
+{
+    "name" : "braune-digital/message-bundle",
+    "description" : "Message bundle",
+    "type" : "symfony-bundle",
+    "authors" : [
+        {
+            "name": "Braune Digital GmbH",
+            "email": "mail@braune-digital.com",
+            "homepage": "https://www.braune-digital.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Patrick Rathje",
+            "email": "pr@braune-digital.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Henrik Braune",
+            "email": "hb@braune-digital.com",
+            "role": "Developer"
+    }],
+    "keywords" : [
+        "message chat conversation bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "knplabs/doctrine-behaviors": "1.2.0"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "BrauneDigital\\MessageBundle\\" : ""
+        }
+    }
+}
