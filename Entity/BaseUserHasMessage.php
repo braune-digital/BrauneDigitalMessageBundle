@@ -16,7 +16,7 @@ abstract class BaseUserHasMessage {
     /**
      * @var boolean
      */
-    protected $wasRead = false;
+    protected $wasRead = null;
 
     public function getUser()
     {
@@ -57,6 +57,10 @@ abstract class BaseUserHasMessage {
      */
     public function setWasRead($wasRead)
     {
-        $this->wasRead = $wasRead;
+        if (!$wasRead) {
+            $this->wasRead = null;
+        } else {
+            $this->wasRead = $wasRead;
+        }
     }
 }

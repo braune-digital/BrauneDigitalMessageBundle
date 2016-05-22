@@ -2,10 +2,10 @@
     type: mappedSuperclass
     table: bd_msg__user_conversation
     fields:
-        joined:
+        joinedOn:
             type: datetime
             nullable: false
-        left:
+        leftOn:
             type: datetime
             nullable: true
         active:

@@ -24,21 +24,34 @@ class ConversationManager {
      * @param bool $receiveOld the user will receive old messages
      */
     public function addMember($conversation, $user, $admin = false, $receiveOld = true) {
+        $userHasConversation = $conversation != null ?$this->em->getRepository($this->entities['user_has_conversation'])->findOneBy(array('conversation' => $conversation, 'user' => $user)) : null;
 
-        $userHasConversation = $this->em->getRepository($this->entities['user_has_conversation'])->findOneBy(array('conversation' => $conversation, 'user' => $user));
+        $welcomeMsg = $conversation->getId() != null;
 
+        if (!$userHasConversation) {
+            //user was not persisted, but we may added him in this session
+            foreach($conversation->getMembers() as $member) {
+                if ($member->getUser() == $user) {
+                    $userHasConversation = $member;
+                    break;
+                }
+            }
+        }
         if (!$userHasConversation) {
             $userHasConversation = new $this->entities['user_has_conversation']();
             $userHasConversation->setConversation($conversation);
             $userHasConversation->setUser($user);
             $userHasConversation->setIsAdmin($admin);
-            $userHasConversation->setJoined(new \DateTime());
+            $userHasConversation->setJoinedOn(new \DateTime());
             $conversation->addMember($userHasConversation);
         } else {
             if ($userHasConversation->isActive()) {
+                $welcomeMsg = false;
                 $receiveOld = false;
             } else {
                 $userHasConversation->setIsAdmin($admin);
+                $userHasConversation->setLeftOn(null);
+                $userHasConversation->setActive(true);
             }
         }
 
@@ -46,6 +59,12 @@ class ConversationManager {
             foreach($conversation->getMessages() as $message) {
                 $this->sendMessage($message, $user, true);
             }
+        }
+
+        if ($welcomeMsg) {
+            $msg = new $this->entities['message']();
+            $msg->setText($user . ' joined the conversation.');
+            $this->sendToConversation($conversation, $msg);
         }
     }
 
@@ -62,7 +81,7 @@ class ConversationManager {
             $userHasMessage->setWasRead($wasRead);
             $userHasMessage->setUser($user);
             $userHasMessage->setMessage($message);
-            $message->addSentTo($user);
+            $message->addSendTo($userHasMessage);
         }
     }
 
@@ -70,10 +89,20 @@ class ConversationManager {
      * @param $conversation
      * @param $user
      */
-    public function removeMember($conversation, $user) {
+    public function removeMember($conversation, $user, $goodByeMsg = true) {
         $userHasConversation = $this->em->getRepository($this->entities['UserHasConversation'])->findOneBy(array('conversation' => $conversation, 'user' => $user));
-        if ($userHasConversation != null) {
-            $userHasConversation->setLeft(new \DateTime());
+
+
+
+        if ($userHasConversation != null && $userHasConversation->isActive()) {
+
+            if ($goodByeMsg) {
+                $msg = new $this->entities['message']();
+                $msg->setText($user . ' left the conversation.');
+                $this->sendToConversation($conversation, $msg);
+            }
+
+            $userHasConversation->setLeftOn(new \DateTime());
             $userHasConversation->setActive(false);
         }
     }

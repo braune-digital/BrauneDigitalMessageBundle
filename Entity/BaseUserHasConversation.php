@@ -16,22 +16,26 @@ abstract class BaseUserHasConversation {
     /**
      * @var \DateTime
      */
-    protected $joined;
+    protected $joinedOn;
 
     /**
      * @var \DateTime
      */
-    protected $left;
+    protected $leftOn;
 
     /**
      * @var boolean
      */
-    protected $active;
+    protected $active = true;
 
     /**
      * @var boolean
      */
-    protected $isAdmin;
+    protected $isAdmin = false;
+
+    public function __construct() {
+        $this->joinedOn = new \DateTime();
+    }
 
     public function getUser()
     {
@@ -57,33 +61,6 @@ abstract class BaseUserHasConversation {
         $this->conversation = $conversation;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getJoined() {
-        return $this->joined;
-    }
-
-    /**
-     * @param \DateTime $joined
-     */
-    public function setJoined($joined) {
-        $this->joined = $joined;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getLeft() {
-        return $this->left;
-    }
-
-    /**
-     * @param \DateTime $left
-     */
-    public function setLeft($left) {
-        $this->left = $left;
-    }
 
     /**
      * @return boolean
@@ -118,5 +95,33 @@ abstract class BaseUserHasConversation {
      */
     public function setIsAdmin($isAdmin) {
         $this->isAdmin = $isAdmin;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getJoinedOn() {
+        return $this->joinedOn;
+    }
+
+    /**
+     * @param \DateTime $joinedOn
+     */
+    public function setJoinedOn($joinedOn) {
+        $this->joinedOn = $joinedOn;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLeftOn() {
+        return $this->leftOn;
+    }
+
+    /**
+     * @param \DateTime $leftOn
+     */
+    public function setLeftOn($leftOn) {
+        $this->leftOn = $leftOn;
     }
 }

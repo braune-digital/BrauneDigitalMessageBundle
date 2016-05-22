@@ -53,6 +53,16 @@ abstract class BaseMessage {
         $this->sendTo = $sendTo;
     }
 
+    public function addSendTo($userHasMessage) {
+        if (!$this->sendTo->contains($userHasMessage)) {
+            $this->sendTo->add($userHasMessage);
+        }
+    }
+
+    public function removeSendTo($userHasMessage) {
+        $this->sendTo->remove($userHasMessage);
+    }
+
     /**
      * @return \DateTime
      */
@@ -123,5 +133,9 @@ abstract class BaseMessage {
      */
     public function setConversation($conversation) {
         $this->conversation = $conversation;
+
+        if ($conversation) {
+            $conversation->addMessage($this);
+        }
     }
 }

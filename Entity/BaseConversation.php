@@ -26,6 +26,7 @@ abstract class BaseConversation {
      * @var \DateTime
      */
     protected $created;
+
     public function __construct() {
         $this->members = new ArrayCollection();
         $this->messages = new ArrayCollection();
@@ -103,13 +104,28 @@ abstract class BaseConversation {
     public function addMessage($message) {
         if(!$this->messages->contains($message)) {
             $this->messages->add($message);
+            $message->setConversation($this);
         }
     }
 
     /**
-     * @param $message UserHasMessage
+     * @param $message
      */
     public function removeMessage($message) {
         $this->messages->remove($message);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated() {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated($created) {
+        $this->created = $created;
     }
 }
