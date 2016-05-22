@@ -13,11 +13,6 @@ abstract class BaseConversation {
     protected $members;
 
     /**
-     * @var ArrayCollection
-     */
-    protected $admins;
-
-    /**
      * @var String
      */
     protected $subject;
@@ -33,7 +28,6 @@ abstract class BaseConversation {
     protected $created;
     public function __construct() {
         $this->members = new ArrayCollection();
-        $this->admins = new ArrayCollection();
         $this->messages = new ArrayCollection();
         $this->created = new \DateTime();
     }
@@ -84,39 +78,6 @@ abstract class BaseConversation {
      */
     public function removeMember($member) {
         $this->members->remove($member);
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getAdmins()
-    {
-        return $this->admins;
-    }
-
-    /**
-     * @param ArrayCollection $admins
-     */
-    public function setAdmins($admins)
-    {
-        $this->admins = $admins;
-    }
-
-
-    /**
-     * @param $admin BaseUserHasConversation
-     */
-    public function addAdmin($admin) {
-        if(!$this->admins->contains($admin)) {
-            $this->admins->add($admin);
-        }
-    }
-
-    /**
-     * @param $admin BaseUserHasConversation
-     */
-    public function removeAdmin($admin) {
-        $this->admins->remove($admin);
     }
 
     /**
