@@ -15,3 +15,5 @@
             targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Message'
             mappedBy: conversation
             cascade: ['persist', 'remove']
+            orderBy:
+                date: ASC

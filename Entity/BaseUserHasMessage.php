@@ -18,6 +18,9 @@ abstract class BaseUserHasMessage {
      */
     protected $wasRead = null;
 
+
+    protected $conversation;
+
     public function getUser()
     {
         return $this->user;
@@ -57,10 +60,30 @@ abstract class BaseUserHasMessage {
      */
     public function setWasRead($wasRead)
     {
-        if (!$wasRead) {
+        if ($wasRead === false) {
             $this->wasRead = null;
+        } else if ($wasRead === true) {
+            $this->wasRead = new \DateTime();
         } else {
             $this->wasRead = $wasRead;
+        }
+    }
+
+    /**
+     * @return BaseConversation
+     */
+    public function getConversation() {
+        return $this->conversation;
+    }
+
+    /**
+     * @param BaseConversation $conversation
+     */
+    public function setConversation($conversation) {
+        $this->conversation = $conversation;
+
+        if ($conversation) {
+            $conversation->addMessage($this);
         }
     }
 }

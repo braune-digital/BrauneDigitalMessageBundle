@@ -57,7 +57,7 @@ class ConversationManager {
 
         if ($receiveOld) {
             foreach($conversation->getMessages() as $message) {
-                $this->sendMessage($message, $user, true);
+                $this->sendMessage($message, $userHasConversation, true);
             }
         }
 
@@ -73,13 +73,14 @@ class ConversationManager {
      * @param      $user
      * @param bool $wasRead
      */
-    public function sendMessage($message, $user, $wasRead = false) {
+    protected function sendMessage($message, $userHasConversation, $wasRead = false) {
 
-        $userHasMessage = $this->em->getRepository($this->entities['user_has_message'])->findOneBy(array('message' => $message, 'user' => $user));
+        $userHasMessage = $this->em->getRepository($this->entities['user_has_message'])->findOneBy(array('message' => $message, 'user' => $userHasConversation->getUser()));
         if ($userHasMessage == null) {
             $userHasMessage = new $this->entities['user_has_message']();
             $userHasMessage->setWasRead($wasRead);
-            $userHasMessage->setUser($user);
+            $userHasMessage->setUser($userHasConversation->getUser());
+            $userHasMessage->setConversation($userHasConversation);
             $userHasMessage->setMessage($message);
             $message->addSendTo($userHasMessage);
         }
@@ -91,8 +92,6 @@ class ConversationManager {
      */
     public function removeMember($conversation, $user, $goodByeMsg = true) {
         $userHasConversation = $this->em->getRepository($this->entities['UserHasConversation'])->findOneBy(array('conversation' => $conversation, 'user' => $user));
-
-
 
         if ($userHasConversation != null && $userHasConversation->isActive()) {
 
@@ -115,7 +114,8 @@ class ConversationManager {
         $conversation->addMessage($message);
         foreach($conversation->getMembers() as $member) {
             if ($member->isActive()) {
-                $this->sendMessage($message, $member->getUser());
+                $wasRead = $message->getBy() && $member->getUser() == $message->getBy();
+                $this->sendMessage($message, $member, $wasRead);
             }
         }
     }

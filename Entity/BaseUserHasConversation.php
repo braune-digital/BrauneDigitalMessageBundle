@@ -2,6 +2,8 @@
 
 namespace BrauneDigital\MessageBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 abstract class BaseUserHasConversation {
@@ -33,8 +35,13 @@ abstract class BaseUserHasConversation {
      */
     protected $isAdmin = false;
 
+    protected $messages;
+
+    protected $unreadMessages;
+
     public function __construct() {
         $this->joinedOn = new \DateTime();
+        $this->messages = new ArrayCollection();
     }
 
     public function getUser()
@@ -123,5 +130,48 @@ abstract class BaseUserHasConversation {
      */
     public function setLeftOn($leftOn) {
         $this->leftOn = $leftOn;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param ArrayCollection $messages
+     */
+    public function setMessages($messages)
+    {
+        $this->messages = $messages;
+    }
+
+
+    /**
+     * @param $message BaseUserHasMessage
+     */
+    public function addMessage($message) {
+        if(!$this->messages->contains($message)) {
+            $this->messages->add($message);
+            $message->setConversation($this);
+        }
+    }
+
+    /**
+     * @param $message
+     */
+    public function removeMessage($message) {
+        $this->messages->remove($message);
+    }
+
+    public function getUnreadMessages() {
+        if (!$this->unreadMessages) {
+            $unreadCriteria = Criteria::create();
+            $unreadCriteria->where(Criteria::expr()->eq('wasRead', null));
+            $this->unreadMessages = $this->messages->matching($unreadCriteria);
+        }
+        return $this->unreadMessages;
     }
 }

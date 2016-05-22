@@ -43,15 +43,24 @@ public function registerBundles()
 
 ## Add the relations to your User-Entity  
 ```xml
- <one-to-many target-entity="Application\BrauneDigital\MessageBundle\Entity\UserHasConversation" field="conversations" mapped-by="user">
+<one-to-many target-entity="Application\BrauneDigital\MessageBundle\Entity\UserHasConversation" field="conversations" mapped-by="user">
             <cascade><cascade-remove /></cascade>
+            <order-by>
+                <order-by-field name="joinedOn" direction="DESC"/>
+            </order-by>
         </one-to-many>
 
         <one-to-many target-entity="Application\BrauneDigital\MessageBundle\Entity\UserHasMessage" field="messages" mapped-by="user">
             <cascade><cascade-remove /></cascade>
+            <order-by>
+                <order-by-field name="date" direction="ASC"/>
+            </order-by>
         </one-to-many>
 
         <one-to-many target-entity="Application\BrauneDigital\MessageBundle\Entity\Message" field="sentMessages" mapped-by="by">
+            <order-by>
+                <order-by-field name="date" direction="ASC"/>
+            </order-by>
         </one-to-many>
 ```
 ## Todo
