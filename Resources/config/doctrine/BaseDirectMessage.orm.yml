@@ -1,0 +1,7 @@
+'BrauneDigital\MessageBundle\Entity\DirectMessage':
+    type: mappedSuperclass
+    inheritanceType: 'SINGLE_TABLE'
+    fields:
+        subject:
+            type: string
+            length: 255

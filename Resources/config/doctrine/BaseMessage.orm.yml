@@ -1,0 +1,11 @@
+'BrauneDigital\MessageBundle\Entity\Message':
+    type: mappedSuperclass
+    inheritanceType: 'SINGLE_TABLE'
+    table: bd_msg_message
+    fields:
+        text:
+            type: text
+            nullable: false
+        date:
+            type: datetime
+            nullable: false

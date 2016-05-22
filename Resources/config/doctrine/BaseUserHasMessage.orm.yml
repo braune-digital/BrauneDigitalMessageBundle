@@ -1,0 +1,10 @@
+'BrauneDigital\MessageBundle\Entity\UserHasMessage':
+    type: mappedSuperclass
+    inheritanceType: 'SINGLE_TABLE'
+    table: bd_msg_user_has_message
+    fields:
+        wasRead:
+            type: datetime
+            options:
+                default: null
+            nullable: true

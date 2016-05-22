@@ -1,0 +1,14 @@
+'Application\BrauneDigital\MessageBundle\Entity\UserHasMessage':
+    type: entity
+    oneToMany:
+        sendTo:
+            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Message'
+            inversedBy: sendTo
+    oneToOne:
+        conversation:
+            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Conversation'
+            inversedBy: messages
+    manyToOne:
+        by:
+            targetEntity: User
+            inversedBy: sentMessages

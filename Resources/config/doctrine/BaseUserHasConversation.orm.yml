@@ -1,0 +1,15 @@
+'BrauneDigital\MessageBundle\Entity\UserHasConversation':
+    type: mappedSuperclass
+    inheritanceType: 'SINGLE_TABLE'
+    table: bd_msg_user_has_conversation
+    fields:
+        joined:
+            type: datetime
+            nullable: false
+        left:
+            type: datetime
+            nullable: true
+        active:
+            type: boolean
+            nullable: false
+        ### TODO Notifications

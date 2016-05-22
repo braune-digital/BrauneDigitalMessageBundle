@@ -1,0 +1,12 @@
+'BrauneDigital\MessageBundle\Entity\Conversation':
+    type: mappedSuperclass
+    inheritanceType: 'SINGLE_TABLE'
+    table: bd_msg_conversation
+    fields:
+        subject:
+            type: string
+            length: 255
+            nullable: true
+        created:
+            type: datetime
+            nullable: false

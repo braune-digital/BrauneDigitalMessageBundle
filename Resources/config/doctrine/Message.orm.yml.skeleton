@@ -1,0 +1,7 @@
+'Application\BrauneDigital\MessageBundle\Entity\Message':
+    type: mappedSuperclass
+    inheritanceType: 'SINGLE_TABLE'
+    oneToMany:
+        sendTo:
+            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Message'
+            inversedBy: sendTo

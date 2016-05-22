@@ -1,0 +1,9 @@
+'Application\BrauneDigital\MessageBundle\Entity\UserHasConversation':
+    type: entity
+    manyToOne:
+        conversation:
+            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Conversation'
+            inversedBy: members
+        user:
+            targetEntity: User
+            inversedBy: conversations
