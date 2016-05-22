@@ -77,4 +77,17 @@ class ConversationManager {
             $userHasConversation->setActive(false);
         }
     }
+
+    /**
+     * @param $conversation
+     * @param $message
+     */
+    public function sendToConversation($conversation, $message) {
+        $conversation->addMessage($message);
+        foreach($conversation->getMembers() as $member) {
+            if ($member->isActive()) {
+                $this->sendMessage($message, $member->getUser());
+            }
+        }
+    }
 }

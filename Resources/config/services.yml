@@ -1,4 +1,4 @@
 services:
     braune_digital_message.conversation_manager:
         class: 'BrauneDigital\MessageBundle\Service\ConversationManager'
-        arguments: ['%braune_digital_message.entities%', "doctrine_orm.manager"]
+        arguments: ['%braune_digital_message.entities%', "@doctrine.orm.entity_manager"]
