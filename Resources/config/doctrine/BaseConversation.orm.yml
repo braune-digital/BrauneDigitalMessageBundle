@@ -5,7 +5,5 @@
         subject:
             type: string
             length: 255
-            nullable: true
         created:
             type: datetime
-            nullable: false

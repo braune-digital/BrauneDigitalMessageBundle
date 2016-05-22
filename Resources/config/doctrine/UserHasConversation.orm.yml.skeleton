@@ -1,6 +1,5 @@
 'Application\BrauneDigital\MessageBundle\Entity\UserHasConversation':
     type: entity
-    inheritanceType: 'SINGLE_TABLE'
     table: bd_msg__user_conversation
     id:
         id:
