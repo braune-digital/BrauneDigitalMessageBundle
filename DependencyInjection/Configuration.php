@@ -20,10 +20,19 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('braune_digital_message');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $this->addEntitiesSection($rootNode);
 
         return $treeBuilder;
+    }
+
+    protected function addEntitiesSection($node) {
+
+        $node->children()->arrayNode('entities')
+            ->addDefaultsIfNotSet(true)
+            ->children()
+            ->scalarNode('conversation')->defaultValue('Application\BrauneDigital\MessageBundle\Entity\Conversation')->end()
+            ->scalarNode('message')->defaultValue('Application\BrauneDigital\MessageBundle\Entity\Message')->end()
+            ->scalarNode('user_has_message')->defaultValue('Application\BrauneDigital\MessageBundle\Entity\UserHasMessage')->end()
+            ->scalarNode('user_has_conversation')->defaultValue('Application\BrauneDigital\MessageBundle\Entity\UserHasConversation')->end();
     }
 }

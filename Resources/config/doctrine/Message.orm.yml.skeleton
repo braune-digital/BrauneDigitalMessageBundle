@@ -17,3 +17,4 @@
         sendTo:
             targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\UserHasMessage'
             mappedBy: message
+            cascade: ['persist', 'remove']

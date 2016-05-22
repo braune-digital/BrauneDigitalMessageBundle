@@ -10,6 +10,8 @@
         members:
             targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\UserHasConversation'
             mappedBy: conversation
+            cascade: ['persist', 'remove']
         messages:
             targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Message'
             mappedBy: conversation
+            cascade: ['persist', 'remove']

@@ -56,3 +56,5 @@ public function registerBundles()
 ```
 ## Todo
 * Add Document Version
+* Validation / Constraints
+* Security (Voters)
