@@ -1,6 +1,6 @@
 'BrauneDigital\MessageBundle\Entity\BaseConversation':
     type: mappedSuperclass
-    table: bd_msg_conversation
+    table: bd_msg__conversation
     fields:
         subject:
             type: string

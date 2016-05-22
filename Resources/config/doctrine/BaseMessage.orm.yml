@@ -1,6 +1,6 @@
 'BrauneDigital\MessageBundle\Entity\BaseMessage':
     type: mappedSuperclass
-    table: bd_msg_message
+    table: bd_msg__message
     fields:
         text:
             type: text

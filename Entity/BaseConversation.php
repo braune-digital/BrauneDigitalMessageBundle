@@ -71,7 +71,7 @@ abstract class BaseConversation {
     }
 
     /**
-     * @param $member UserHasMessage
+     * @param $member BaseUserHasConversation
      */
     public function addMember($member) {
         if(!$this->members->contains($member)) {
@@ -80,7 +80,7 @@ abstract class BaseConversation {
     }
 
     /**
-     * @param $member UserHasMessage
+     * @param $member BaseUserHasConversation
      */
     public function removeMember($member) {
         $this->members->remove($member);
@@ -104,7 +104,7 @@ abstract class BaseConversation {
 
 
     /**
-     * @param $admin UserHasMessage
+     * @param $admin BaseUserHasConversation
      */
     public function addAdmin($admin) {
         if(!$this->admins->contains($admin)) {
@@ -113,7 +113,7 @@ abstract class BaseConversation {
     }
 
     /**
-     * @param $admin UserHasMessage
+     * @param $admin BaseUserHasConversation
      */
     public function removeAdmin($admin) {
         $this->admins->remove($admin);
@@ -137,7 +137,7 @@ abstract class BaseConversation {
 
 
     /**
-     * @param $message UserHasMessage
+     * @param $message BaseUserHasMessage
      */
     public function addMessage($message) {
         if(!$this->messages->contains($message)) {

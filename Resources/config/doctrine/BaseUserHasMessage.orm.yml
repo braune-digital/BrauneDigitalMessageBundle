@@ -1,6 +1,6 @@
 'BrauneDigital\MessageBundle\Entity\BaseUserHasMessage':
     type: mappedSuperclass
-    table: bd_msg_user_has_message
+    table: bd_msg__user_message
     fields:
         wasRead:
             type: datetime
