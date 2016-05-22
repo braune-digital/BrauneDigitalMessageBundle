@@ -1,14 +1,16 @@
 'Application\BrauneDigital\MessageBundle\Entity\UserHasMessage':
     type: entity
-    oneToMany:
-        sendTo:
-            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Message'
-            inversedBy: sendTo
-    oneToOne:
-        conversation:
-            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Conversation'
-            inversedBy: messages
+    inheritanceType: 'SINGLE_TABLE'
+    table: bd_msg__user_message
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
     manyToOne:
-        by:
-            targetEntity: User
-            inversedBy: sentMessages
+        message:
+            targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Message'
+            inversedBy: messages
+        user:
+            targetEntity: 'Application\Sonata\UserBundle\Entity\User'
+            inversedBy: conversations

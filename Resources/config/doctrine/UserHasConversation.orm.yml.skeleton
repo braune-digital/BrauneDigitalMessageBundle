@@ -1,9 +1,16 @@
 'Application\BrauneDigital\MessageBundle\Entity\UserHasConversation':
     type: entity
+    inheritanceType: 'SINGLE_TABLE'
+    table: bd_msg__user_conversation
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
     manyToOne:
         conversation:
             targetEntity: 'Application\BrauneDigital\MessageBundle\Entity\Conversation'
             inversedBy: members
         user:
-            targetEntity: User
+            targetEntity: 'Application\Sonata\UserBundle\Entity\User'
             inversedBy: conversations

@@ -22,6 +22,18 @@ abstract class BaseMessage {
      */
     protected $date;
 
+    /**
+     * @var string
+     */
+    protected $subject;
+
+    protected $by;
+
+    /**
+     * @var BaseConversation
+     */
+    protected $conversation;
+
     public function __construct() {
         $this->sendTo = new ArrayCollection();
         $this->date = new \DateTime();
@@ -69,5 +81,47 @@ abstract class BaseMessage {
      */
     public function setText($text) {
         $this->text = $text;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject() {
+        return $this->subject;
+    }
+
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject) {
+        $this->subject = $subject;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBy() {
+        return $this->by;
+    }
+
+    /**
+     * @param mixed $by
+     */
+    public function setBy($by) {
+        $this->by = $by;
+    }
+
+    /**
+     * @return BaseConversation
+     */
+    public function getConversation() {
+        return $this->conversation;
+    }
+
+    /**
+     * @param BaseConversation $conversation
+     */
+    public function setConversation($conversation) {
+        $this->conversation = $conversation;
     }
 }

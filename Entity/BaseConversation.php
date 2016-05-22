@@ -27,10 +27,15 @@ abstract class BaseConversation {
      */
     protected $messages;
 
+    /**
+     * @var \DateTime
+     */
+    protected $created;
     public function __construct() {
         $this->members = new ArrayCollection();
         $this->admins = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->created = new \DateTime();
     }
 
     /**

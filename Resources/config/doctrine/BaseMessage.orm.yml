@@ -1,6 +1,5 @@
-'BrauneDigital\MessageBundle\Entity\Message':
+'BrauneDigital\MessageBundle\Entity\BaseMessage':
     type: mappedSuperclass
-    inheritanceType: 'SINGLE_TABLE'
     table: bd_msg_message
     fields:
         text:
@@ -9,3 +8,7 @@
         date:
             type: datetime
             nullable: false
+        subject:
+            type: string
+            length: 255
+            nullable: true

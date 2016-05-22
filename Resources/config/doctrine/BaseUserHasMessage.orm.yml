@@ -1,6 +1,5 @@
-'BrauneDigital\MessageBundle\Entity\UserHasMessage':
+'BrauneDigital\MessageBundle\Entity\BaseUserHasMessage':
     type: mappedSuperclass
-    inheritanceType: 'SINGLE_TABLE'
     table: bd_msg_user_has_message
     fields:
         wasRead:
