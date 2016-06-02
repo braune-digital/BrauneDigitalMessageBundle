@@ -18,7 +18,7 @@ public function registerBundles()
     {
         $bundles = array(
           ...
-          new BrauneDigital\MesssageBundle\BrauneDigitalMessageBundle(),
+          new BrauneDigital\MessageBundle\BrauneDigitalMessageBundle(),
           ...
         );
 ```
@@ -36,7 +36,7 @@ public function registerBundles()
     {
         $bundles = array(
           ...
-          new Application\BrauneDigital\MesssageBundle\ApplicationBrauneDigitalMessageBundle(),
+          new Application\BrauneDigital\MessageBundle\ApplicationBrauneDigitalMessageBundle(),
           ...
         );
 ```
