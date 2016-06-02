@@ -4,7 +4,6 @@ namespace BrauneDigital\MessageBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 abstract class BaseUserHasConversation {
 

@@ -1,0 +1,8 @@
+BrauneDigital\MessageBundle\Entity\BaseUserHasMessage:
+    exclusion_policy: ALL
+    properties:
+        wasRead:
+            expose: true
+            type: datetime
+        message:
+            expose: true

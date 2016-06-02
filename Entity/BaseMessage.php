@@ -3,7 +3,6 @@
 namespace BrauneDigital\MessageBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 abstract class BaseMessage {
 

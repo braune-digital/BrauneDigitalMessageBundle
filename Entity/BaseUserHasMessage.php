@@ -2,8 +2,6 @@
 
 namespace BrauneDigital\MessageBundle\Entity;
 
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-
 abstract class BaseUserHasMessage {
 
     protected $user;

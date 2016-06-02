@@ -1,0 +1,13 @@
+BrauneDigital\MessageBundle\Entity\BaseConversation:
+    exclusion_policy: ALL
+    properties:
+        subjects:
+            expose: true
+            type: string
+        created:
+            expose: true
+            type: datetime
+        members:
+            expose: true
+        messages:
+            expose: true

@@ -1,0 +1,22 @@
+BrauneDigital\MessageBundle\Entity\BaseUserHasConversation:
+    exclusion_policy: ALL
+    properties:
+        joinedOn:
+            expose: true
+            type: datetime
+            serialized_name: joined_on
+        leftOn:
+            expose: true
+            type: datetime
+            serialized_name: left_on
+        active:
+            expose: true
+            type: boolean
+        isAdmin:
+            expose: true
+            type: boolean
+            serialized_name: is_admin
+        messages:
+            expose: true
+        conversation:
+            expose: true

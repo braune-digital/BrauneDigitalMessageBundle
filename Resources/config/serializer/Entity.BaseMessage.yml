@@ -1,0 +1,18 @@
+BrauneDigital\MessageBundle\Entity\BaseMessage:
+    exclusion_policy: ALL
+    properties:
+        sendTo:
+            expose: false
+        conversation:
+            expose: false
+        text:
+            expose: true
+            type: string
+        subject:
+            expose: true
+            type: string
+        date:
+            expose: true
+            type: datetime
+        by:
+            expose: true
