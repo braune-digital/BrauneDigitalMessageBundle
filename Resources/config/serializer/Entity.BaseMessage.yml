@@ -1,5 +1,6 @@
 BrauneDigital\MessageBundle\Entity\BaseMessage:
     exclusion_policy: ALL
+    access_type: public_method
     properties:
         sendTo:
             expose: false
@@ -13,6 +14,6 @@ BrauneDigital\MessageBundle\Entity\BaseMessage:
             type: string
         date:
             expose: true
-            type: datetime
+            type: DateTime
         by:
             expose: true
