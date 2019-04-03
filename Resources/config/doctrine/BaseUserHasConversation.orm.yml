@@ -12,12 +12,10 @@
             type: boolean
             nullable: false
             options:
-                default:
-                    1
+                default: 1
         isAdmin:
             type: boolean
             nullable: false
             options:
-                default:
-                    0
+                default: 0
         ### TODO Notifications
