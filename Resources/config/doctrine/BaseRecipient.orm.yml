@@ -1,8 +1,8 @@
-'BrauneDigital\MessageBundle\Entity\BaseUserHasMessage':
+'BrauneDigital\MessageBundle\Entity\BaseRecipient':
     type: mappedSuperclass
     table: bd_msg__user_message
     fields:
-        wasRead:
+        readAt:
             type: datetime
             options:
                 default: null

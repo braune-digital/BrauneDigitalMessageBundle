@@ -2,8 +2,6 @@ BrauneDigital\MessageBundle\Entity\BaseUserHasMessage:
     exclusion_policy: ALL
     access_type: public_method
     properties:
-        wasRead:
+        readAt:
             expose: true
             type: DateTime
-        message:
-            expose: true

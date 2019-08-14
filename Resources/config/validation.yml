@@ -1,7 +1,7 @@
 BrauneDigital\MessageBundle\Entity\BaseMessage:
     properties:
-        text:
+        content:
             - NotBlank:
-                message: 'braune_digital_message.message.text.not_blank'
-        date:
+                message: 'braune_digital_message.message.content.not_blank'
+        createdAt:
             - NotNull: ~

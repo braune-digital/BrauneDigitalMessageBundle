@@ -2,18 +2,12 @@ BrauneDigital\MessageBundle\Entity\BaseMessage:
     exclusion_policy: ALL
     access_type: public_method
     properties:
-        sendTo:
-            expose: false
-        conversation:
-            expose: false
-        text:
+        content:
             expose: true
             type: string
         subject:
             expose: true
             type: string
-        date:
+        createdAt:
             expose: true
             type: DateTime
-        by:
-            expose: true

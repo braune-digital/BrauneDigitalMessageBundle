@@ -149,7 +149,7 @@ abstract class BaseUserHasConversation {
 
 
     /**
-     * @param $message BaseUserHasMessage
+     * @param $message BaseRecipient
      */
     public function addMessage($message) {
         if(!$this->messages->contains($message)) {

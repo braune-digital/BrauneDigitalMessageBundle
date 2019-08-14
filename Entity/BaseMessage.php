@@ -2,139 +2,104 @@
 
 namespace BrauneDigital\MessageBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 abstract class BaseMessage {
 
     /**
-     * @var ArrayCollection
+     * @var string
      */
-    protected $sendTo;
+    protected $type;
+
+    /**
+     * @var string
+     */
+    protected $tags;
 
     /**
      * @var String
      */
-    protected $text;
+    protected $content;
 
     /**
      * @var \DateTime
      */
-    protected $date;
+    protected $createdAt;
 
     /**
      * @var string
      */
     protected $subject;
 
-    protected $by;
-
-    /**
-     * @var BaseConversation
-     */
-    protected $conversation;
-
     public function __construct() {
-        $this->sendTo = new ArrayCollection();
-        $this->date = new \DateTime();
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getSendTo() {
-        return $this->sendTo;
-    }
-
-    /**
-     * @param ArrayCollection $sendTo
-     */
-    public function setSendTo($sendTo) {
-        $this->sendTo = $sendTo;
-    }
-
-    public function addSendTo($userHasMessage) {
-        if (!$this->sendTo->contains($userHasMessage)) {
-            $this->sendTo->add($userHasMessage);
-        }
-    }
-
-    public function removeSendTo($userHasMessage) {
-        $this->sendTo->remove($userHasMessage);
+        $this->createdAt = new \DateTime();
     }
 
     /**
      * @return \DateTime
      */
-    public function getDate()
-    {
-        return $this->date;
+    public function getDate(): \DateTime {
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTime $createdAt
      */
-    public function setDate($date)
-    {
-        $this->date = $date;
-    }
-
-    /**
-     * @return String
-     */
-    public function getText() {
-        return $this->text;
-    }
-
-    /**
-     * @param String $text
-     */
-    public function setText($text) {
-        $this->text = $text;
+    public function setDate($createdAt): void {
+        $this->createdAt = $createdAt;
     }
 
     /**
      * @return string
      */
-    public function getSubject() {
+    public function getContent(): string {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent($content): void {
+        $this->content = $content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubject(): string {
         return $this->subject;
     }
 
     /**
      * @param string $subject
      */
-    public function setSubject($subject) {
+    public function setSubject($subject): void {
         $this->subject = $subject;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getBy() {
-        return $this->by;
+    public function getTags(): string {
+        return $this->tags;
     }
 
     /**
-     * @param mixed $by
+     * @param string $tags
      */
-    public function setBy($by) {
-        $this->by = $by;
+    public function setTags(string $tags): void {
+        $this->tags = $tags;
     }
 
     /**
-     * @return BaseConversation
+     * @return string
      */
-    public function getConversation() {
-        return $this->conversation;
+    public function getType(): string {
+        return $this->type;
     }
 
     /**
-     * @param BaseConversation $conversation
+     * @param string $type
      */
-    public function setConversation($conversation) {
-        $this->conversation = $conversation;
-
-        if ($conversation) {
-            $conversation->addMessage($this);
-        }
+    public function setType(string $type): void {
+        $this->type = $type;
     }
 }

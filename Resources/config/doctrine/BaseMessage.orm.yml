@@ -2,10 +2,10 @@
     type: mappedSuperclass
     table: bd_msg__message
     fields:
-        text:
+        content:
             type: text
             nullable: false
-        date:
+        createdAt:
             type: datetime
             nullable: false
         subject:
