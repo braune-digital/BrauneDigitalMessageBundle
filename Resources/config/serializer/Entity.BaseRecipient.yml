@@ -1,4 +1,4 @@
-BrauneDigital\MessageBundle\Entity\BaseUserHasMessage:
+BrauneDigital\MessageBundle\Entity\BaseRecipient:
     exclusion_policy: ALL
     access_type: public_method
     properties:

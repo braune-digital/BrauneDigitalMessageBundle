@@ -36,14 +36,14 @@ abstract class BaseMessage {
     /**
      * @return \DateTime
      */
-    public function getDate(): \DateTime {
+    public function getCreatedAt(): \DateTime {
         return $this->createdAt;
     }
 
     /**
      * @param \DateTime $createdAt
      */
-    public function setDate($createdAt): void {
+    public function setCreatedAt($createdAt): void {
         $this->createdAt = $createdAt;
     }
 
