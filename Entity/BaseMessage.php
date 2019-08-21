@@ -2,10 +2,13 @@
 
 namespace BrauneDigital\MessageBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 abstract class BaseMessage {
 
     /**
      * @var string
+     * @ORM\Column(type="string", name="type")
      */
     protected $type;
 
