@@ -60,4 +60,8 @@ abstract class BaseRecipient {
             $this->readAt = $readAt;
         }
     }
+
+    public function isRead() {
+        return $this->getReadAt() != null;
+    }
 }
