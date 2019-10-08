@@ -2,7 +2,6 @@
 
 namespace BrauneDigital\MessageBundle\Entity;
 
-use App\Model\IdAwareTrait;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -11,7 +10,6 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @Gedmo\SoftDeleteable()
  */
 abstract class BaseRecipient {
-    use IdAwareTrait;
     use SoftDeleteable;
     use TimestampableEntity;
 
