@@ -2,7 +2,6 @@
 
 namespace BrauneDigital\MessageBundle\Entity;
 
-use App\Entity\Messaging\LUMessage;
 use App\Model\IdAwareTrait;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteable;
