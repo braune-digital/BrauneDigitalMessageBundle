@@ -53,7 +53,7 @@ abstract class BaseMessage {
     /**
      * @return string
      */
-    public function getContent(): string {
+    public function getContent(): ?string {
         return $this->content;
     }
 
@@ -67,7 +67,7 @@ abstract class BaseMessage {
     /**
      * @return string
      */
-    public function getSubject(): string {
+    public function getSubject(): ?string {
         return $this->subject;
     }
 
